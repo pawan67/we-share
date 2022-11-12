@@ -26,7 +26,7 @@ export default function Home() {
     <AuthLayout>
       <div className=" max-w-xl mx-auto ">
         <div className=" space-y-5 ">
-          {data && data?.map((post) => <PostCard postData={post} />)}
+          {data && data?.map((post, i) => <PostCard key={i} postData={post} />)}
         </div>
       </div>
     </AuthLayout>
