@@ -8,6 +8,7 @@ const getAllPosts = asyncHandler(async (req, res) => {
 
 const createPost = asyncHandler(async (req, res) => {
   const { caption, image } = req.body;
+  
   const post = await Post.create({
     user: req.user._id,
     caption,
@@ -19,10 +20,14 @@ const createPost = asyncHandler(async (req, res) => {
 });
 
 const deletePost = asyncHandler(async (req, res) => {
-  const { id } = req.params;
-  const post = await Post.findById(id);
-
-  await post.remove();
+  const post = await Post.findById(req.params.id);
+  if (post) {
+    await post.remove();
+    res.json({ message: "Post removed" });
+  } else {
+    res.status(404);
+    throw new Error("Post not found");
+  }
 });
 
 module.exports = {

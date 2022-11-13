@@ -1,9 +1,12 @@
 import { BASE_URL } from "../config/urls";
 import { userDetails } from "./authHandler";
+
 import axios from "axios";
+
+const token = userDetails()?.token;
 const headers = {
   "Content-Type": "application/json",
-  Authorization: `Bearer ${userDetails().token}`,
+  Authorization: `Bearer ${token}`,
 };
 
 export const getUserPosts = async () => {
@@ -28,7 +31,7 @@ export const createPost = async (caption, image) => {
 };
 
 export const deletePost = async (id) => {
-  const res = await axios.delete(`${BASE_URL}/api/posts/?=${id}`, {
+  const res = await axios.delete(`${BASE_URL}/api/posts/${id}`, {
     headers,
   });
   return res.data;

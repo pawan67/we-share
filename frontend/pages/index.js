@@ -20,13 +20,18 @@ export default function Home() {
   };
 
   useEffect(() => {
-    fetchData();
+    if (user) {
+      fetchData();
+    }
   }, []);
   return (
     <AuthLayout>
       <div className=" max-w-xl mx-auto ">
-        <div className=" space-y-5 ">
-          {data && data?.map((post, i) => <PostCard key={i} postData={post} />)}
+        <div className="  space-y-5 ">
+          {data &&
+            data?.map((post, i) => (
+              <PostCard  key={i} postData={post} />
+            ))}
         </div>
       </div>
     </AuthLayout>

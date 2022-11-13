@@ -8,8 +8,10 @@ import MoreVert from "@mui/icons-material/MoreVert";
 import Edit from "@mui/icons-material/Edit";
 import DeleteForever from "@mui/icons-material/DeleteForever";
 import { deletePost } from "../../src/handlers/postsHandler";
+import { useRouter } from "next/dist/client/router";
 
-export default function PostCardMenu({ id }) {
+export default function PostCardMenu({ id, fetchData }) {
+  const router = useRouter();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -26,7 +28,7 @@ export default function PostCardMenu({ id }) {
         aria-controls={open ? "positioned-demo-menu" : undefined}
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
-        variant="outlined"
+        variant=""
         color="neutral"
         onClick={handleClick}
       >
@@ -55,6 +57,7 @@ export default function PostCardMenu({ id }) {
           onClick={() => {
             handleClose();
             deletePost(id);
+            // refresh page
             window.location.reload();
           }}
           variant="soft"

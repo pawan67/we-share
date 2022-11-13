@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 
 const postSchema = mongoose.Schema(
   {
-    _id: mongoose.Types.ObjectId,
     user: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,

@@ -13,6 +13,7 @@
     "@emotion/styled": "^11.10.5",
     "@mui/icons-material": "^5.10.9",
     "@mui/joy": "^5.0.0-alpha.53",
+    "@nextui-org/react": "^1.0.0-beta.10",
     "axios": "^1.1.3",
     "eslint": "8.27.0",
     "eslint-config-next": "13.0.3",

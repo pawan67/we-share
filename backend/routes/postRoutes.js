@@ -7,10 +7,7 @@ const {
 const { protect } = require("../middlewares/authMiddleware");
 const router = express.Router();
 
-router
-  .route("/")
-  .get(protect, getAllPosts)
-  .post(protect, createPost)
-  .delete(protect, deletePost);
+router.route("/").get(protect, getAllPosts).post(protect, createPost);
+router.route("/:id").delete(protect, deletePost);
 
 module.exports = router;
